@@ -3,6 +3,7 @@ package itp341.carter.christin.a7.app;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,6 +35,7 @@ public class NoteEditActivity extends Activity {
 
         if(i != null){
             position = i.getIntExtra(EXTRA_POSITION,-1);
+            Log.d("String","Position: " + position);
             if(position != -1){//Existing note
                 Note n = NoteSingleton.getInstance(this).getNotes(position);
                 loadViews(n);
@@ -63,7 +65,10 @@ public class NoteEditActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Note savedNote = saveNote();
-                NoteSingleton.getInstance(getApplicationContext()).updateNote(position,savedNote);
+                if(position != -1)
+                    NoteSingleton.getInstance(getApplicationContext()).updateNote(position,savedNote);
+                else
+                    NoteSingleton.getInstance(getApplicationContext()).addNote(savedNote);
                 setResult(RESULT_OK);
                 finish();
             }
@@ -72,7 +77,9 @@ public class NoteEditActivity extends Activity {
         btnDeleteNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                NoteSingleton.getInstance(getApplicationContext()).removeNote(position);
+                setResult(RESULT_OK);
+                finish();
             }
         });
     }

@@ -34,6 +34,15 @@ public class NoteListActivity extends Activity{
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode == RESULT_OK){
+            noteAdapter.notifyDataSetChanged();
+        }
+    }
+
     private void setListeners(){
         listViewNotes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

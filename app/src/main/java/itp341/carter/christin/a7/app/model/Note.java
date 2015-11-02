@@ -2,6 +2,7 @@ package itp341.carter.christin.a7.app.model;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * Created by Chris on 10/27/2015.
@@ -14,7 +15,9 @@ public class Note {
     public Note(String title, String content) {
         this.title = title;
         this.content = content;
-        this.date = Calendar.getInstance().getTime();
+
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT-08"));
+        this.date = cal.getTime();
     }
 
     public String getTitle() {
@@ -43,7 +46,7 @@ public class Note {
 
     public String getFormattedDate(){
         String formattedDate;
-        Calendar cal = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance(TimeZone.getDefault());
         cal.setTime(date);
 
         formattedDate = (cal.get(Calendar.MONTH) + 1) + "/" + cal.get(Calendar.DAY_OF_MONTH) + "/" +
