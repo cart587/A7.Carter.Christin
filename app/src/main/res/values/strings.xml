@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">A7.Carter.Christin</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="add">Add</string>
+    <string name="title">Title</string>
+    <string name="save_note">Save Note</string>
+    <string name="delete_note">Delete Note</string>
+    <string name="content_hint">Enter note content here.</string>
+</resources>
