@@ -34,7 +34,7 @@ public class NoteSingleton {
         return noteArrayList;
     }
 
-    public Note getCoffeeShop(int index){
+    public Note getNotes(int index){
         return noteArrayList.get(index);
     }
 

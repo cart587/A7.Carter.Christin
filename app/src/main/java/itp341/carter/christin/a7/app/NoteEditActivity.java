@@ -35,7 +35,7 @@ public class NoteEditActivity extends Activity {
         if(i != null){
             position = i.getIntExtra(EXTRA_POSITION,-1);
             if(position != -1){//Existing note
-                Note n = NoteSingleton.getInstance(this).getCoffeeShop(position);
+                Note n = NoteSingleton.getInstance(this).getNotes(position);
                 loadViews(n);
             }else{//New note
                 btnDeleteNote.setEnabled(false);
